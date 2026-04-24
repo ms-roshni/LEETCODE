@@ -5,20 +5,19 @@ class Solution {
         for(String c : tokens){
             if(!c.equals("+") && !c.equals("-") && !c.equals("*") && !c.equals("/")){
                 s.push(Integer.parseInt(c));
-            }else{
+            } else {
                 int op2 = s.pop();
                 int op1 = s.pop();
-                int res=0;
+                
                 if(c.equals("+")){
-                    res = op1+op2;
-                }else if(c.equals("-")){
-                    res = op1-op2;
-                }else if(c.equals("*")){
-                    res = op1*op2;
-                }else if(c.equals("/")){
-                    res = op1/op2;
+                    s.push(op1 + op2);
+                } else if(c.equals("-")){
+                    s.push(op1 - op2);
+                } else if(c.equals("*")){
+                    s.push(op1 * op2);
+                } else {
+                    s.push(op1 / op2);
                 }
-                s.push(res);
             }
         }
         return s.pop();
