@@ -1,26 +1,28 @@
+import java.util.*;
+
 class MinStack {
-    Stack<Integer> stack = new Stack<>();
-    Stack<Integer> minStack = new Stack<>();
+    Stack<Integer> stack;
+    Stack<Integer> minStack;
 
     public MinStack() {
-        
+        stack = new Stack<>();
+        minStack = new Stack<>();
     }
     
     public void push(int val) {
+        stack.push(val);
         
-        stack.push(val); // push all into stack
-        if(minStack.isEmpty() || val<=minStack.peek()){ //oly push if new val<minstack's top
+        if (minStack.isEmpty() || val <= minStack.peek()) {
             minStack.push(val);
         }
     }
     
     public void pop() {
         int removed = stack.pop();
-        if(removed == minStack.peek()){
+        
+        if (removed == minStack.peek()) {
             minStack.pop();
         }
-        
-        
     }
     
     public int top() {
